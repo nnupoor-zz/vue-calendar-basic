@@ -20,12 +20,21 @@ var config = {
       },
       {
         test: /\.css$/,
-        loader: 'style!less!css'
-      }
+        use: [
+          "css-loader"
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader" // creates style nodes from JS strings
+        }, {
+          loader: "css-loader" // translates CSS into CommonJS
+        }, {
+          loader: "sass-loader" // compiles Sass to CSS
+        }]
+      },
     ]
-  },
-  externals: {
-    moment: 'moment'
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin( {
@@ -44,17 +53,17 @@ module.exports = [
   merge(config, {
     entry: path.resolve(__dirname + '/src/plugin.js'),
     output: {
-      filename: 'vue-clock.min.js',
+      filename: 'vue-calendar.min.js',
       libraryTarget: 'window',
-      library: 'VueClock',
+      library: 'VueCalendar',
     }
   }),
   merge(config, {
-    entry: path.resolve(__dirname + '/src/Clock.vue'),
+    entry: path.resolve(__dirname + '/src/Calendar.vue'),
     output: {
-      filename: 'vue-clock.js',
+      filename: 'vue-calendar.js',
       libraryTarget: 'umd',
-      library: 'vue-clock',
+      library: 'vue-calendar',
       umdNamedDefine: true
     }
   })

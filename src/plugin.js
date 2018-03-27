@@ -1,7 +1,7 @@
-import Clock from './Clock.vue';
+import Calendar from './Calendar.vue';
 
 module.exports = {
   install: function (Vue, options) {
-    Vue.component('vue-clock', Clock);
+    Vue.component('vue-calendar', Calendar);
   }
 };
