@@ -1,4 +1,4 @@
-# vue-clock-simple
+# vue-calendar-basic
 
 A Vue component that shows a calendar.
 
